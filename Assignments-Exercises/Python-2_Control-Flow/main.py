@@ -3,7 +3,7 @@
 
 try:
     # Input: Get age from the user
-    user_input = int(input("Please enter your age: "))
+    user_input: int = int(input("Please enter your age: "))
 
     # Check the age category
     if user_input < 0:
@@ -16,6 +16,10 @@ try:
         print("You are categorized as: Adult")
     else:
         print("You are categorized as: Senior")
-        
-except ValueError:
-    print("Invalid input: Age cannot be a non-number.")
+
+except ValueError as e:
+    print(
+        e
+        if "Age cannot be negative." in str(e)
+        else "Invalid input: Age cannot be a non-integer."
+    )
